@@ -1,0 +1,120 @@
+.stand-container {
+  height: 100vh;
+  position: relative;
+  background-image: url('../../images/celbg.png');
+  background-position: center;
+  background-size: cover;
+  width: 100%;
+  .logo-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    .logo {
+      width: 130px;
+    }
+  }
+  .coins-container {
+    background-color: white;
+    width: 55px;
+    height: 55px;
+
+    margin: 5px 5px 5px 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 100%;
+    position: relative;
+    &::before {
+      content: '';
+      background-image: url('../../images/coins.svg');
+      position: absolute;
+      top: -12px;
+      left: -45px;
+      background-size: contain;
+      width: 101px;
+      height: 32px;
+      background-repeat: no-repeat;
+    }
+  }
+  .icon-button {
+    background-color: var(--primary-color);
+    width: 55px;
+    height: 55px;
+    margin: 5px;
+    z-index: 200;
+    // padding: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 100%;
+    svg {
+      height: 60%;
+      width: 60%;
+      // height: 7;
+    }
+    img {
+      height: 80%;
+      width: 85%;
+    }
+    &:hover {
+      background-color: var(--secondary-color);
+    }
+  }
+
+  .mobile-bottom-nav {
+    position: absolute;
+    display: flex;
+    justify-content: space-between;
+    bottom: 0;
+    width: 100%;
+  }
+}
+
+@media screen and (min-width: 600px) {
+  .stand-container {
+    background-image: url('../../images/pcbg.png');
+    background-position: center;
+    background-size: cover;
+    .logo-container {
+      // height: auto;
+      position: absolute;
+      bottom: 0;
+      top: unset;
+      left: unset;
+      width: unset;
+      right: 10px;
+      height: 170px;
+
+      .logo {
+        width: 200px;
+        object-fit: contain;
+      }
+    }
+
+    .icon-button {
+      width: 80px;
+      height: 80px;
+      margin: 5px;
+    }
+    .coins-container {
+      width: 80px;
+      height: 80px;
+      &:before {
+        top: -30px;
+        left: -90px;
+        width: 200px;
+        height: 80px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+    }
+    .mobile-bottom-nav {
+      justify-content: center;
+      bottom: 30px;
+    }
+  }
+}

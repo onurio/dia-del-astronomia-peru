@@ -1,0 +1,16 @@
+.App {
+  text-align: center;
+}
+
+.front-modal {
+  border: 2px solid var(--primary-color) !important;
+}
+
+@font-face {
+  font-family: ErasITC-Bold;
+  src: url('./fonts/Eras-Bold-ITC_15884.ttf');
+}
+
+* {
+  font-family: ErasITC-Bold;
+}

@@ -1,0 +1,32 @@
+.stand-menu-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin: auto auto;
+  height: 100% !important;
+  justify-content: space-evenly;
+  align-items: center;
+  min-height: 300px;
+  position: relative;
+  .menu-button {
+    &:hover {
+      background-color: #993acc;
+    }
+    img {
+      height: 20px;
+      position: absolute;
+      top: 7px;
+      left: 20px;
+    }
+    position: relative;
+    display: flex;
+    justify-content: center;
+    width: 80%;
+    max-width: 230px;
+    background-color: var(--black-button-color);
+    color: white;
+    padding: 8px;
+    font-size: 15px;
+    border-radius: 20px;
+  }
+}
