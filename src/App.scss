@@ -2,15 +2,26 @@
   text-align: center;
 }
 
+.main > * {
+  font-family: 'ErasITC-Bold';
+}
+.front-modal * {
+  font-family: 'ErasITC-Bold';
+}
+
 .front-modal {
-  border: 2px solid var(--primary-color) !important;
+  .content-container {
+    width: 90%;
+    margin: 50px auto;
+    h2 {
+      color: var(--secondary-color);
+      text-align: center;
+      margin-bottom: 20px;
+    }
+  }
 }
 
 @font-face {
   font-family: ErasITC-Bold;
   src: url('./fonts/Eras-Bold-ITC_15884.ttf');
-}
-
-* {
-  font-family: ErasITC-Bold;
 }

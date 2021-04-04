@@ -74,28 +74,20 @@ function Dashboard({ logout, window, children }) {
       <div className={classes.toolbar} />
       <Divider />
       <List>
-        <Link className={classes.link} to="/admin">
-          <ListItem button key="settings">
-            <ListItemIcon>
-              <SettingsIcon />
-            </ListItemIcon>
-            <ListItemText primary="General Settings" />
-          </ListItem>
-        </Link>
-        <Link className={classes.link} to="/admin/artists">
-          <ListItem button key="artists">
+        <Link className={classes.link} to="/admin/stands">
+          <ListItem button key="stands">
             <ListItemIcon>
               <PersonIcon />
             </ListItemIcon>
-            <ListItemText primary="Artists" />
+            <ListItemText primary="Stands" />
           </ListItem>
         </Link>
-        <Link className={classes.link} to="/admin/expositions">
-          <ListItem button key="expos">
+        <Link className={classes.link} to="/admin/">
+          <ListItem button key="general">
             <ListItemIcon>
-              <CalendarTodayIcon />
+              <PersonIcon />
             </ListItemIcon>
-            <ListItemText primary="Expositions" />
+            <ListItemText primary="General Settings" />
           </ListItem>
         </Link>
       </List>
@@ -127,7 +119,7 @@ function Dashboard({ logout, window, children }) {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" noWrap>
-            Galeria Gato Tulipan Admin
+            Dia Internacional de Astronomia Peru - ADMIN
           </Typography>
         </Toolbar>
       </AppBar>

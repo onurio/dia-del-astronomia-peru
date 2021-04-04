@@ -1,0 +1,23 @@
+.content-container {
+  p {
+    color: white;
+  }
+  .workshops-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 100%;
+    a {
+      width: calc(90% - 16px);
+      margin: 10px auto;
+      border-radius: 20px;
+      border: 2px solid var(--primary-color);
+      font-size: 15px;
+      background-color: #525453;
+      padding: 8px;
+      text-align: center;
+      color: white;
+    }
+  }
+}

@@ -5,6 +5,8 @@ import Backdrop from '@material-ui/core/Backdrop';
 import Fade from '@material-ui/core/Fade';
 import { IconButton } from '@material-ui/core';
 import CloseIcon from '@material-ui/icons/Close';
+import ArrowBack from '@material-ui/icons/ArrowBack';
+
 const useStyles = makeStyles((theme) => ({
   modal: {
     display: 'flex',
@@ -23,6 +25,9 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.down('sm')]: {
       width: '90%',
     },
+    [theme.breakpoints.up('md')]: {
+      width: 550,
+    },
     maxWidth: '100vw',
     padding: '0 20px 0 20px',
     overflowY: 'auto',
@@ -35,6 +40,12 @@ const useStyles = makeStyles((theme) => ({
     right: 5,
     zIndex: 999,
   },
+  back: {
+    position: 'absolute',
+    top: 5,
+    left: 5,
+    zIndex: 999,
+  },
 }));
 
 export const ModalContext = createContext();
@@ -43,11 +54,15 @@ export default function FrontModal({ children }) {
   const classes = useStyles();
   const [open, setOpen] = useState(false);
   const [content, setContent] = useState(null);
+  const [options, setOptions] = useState({});
 
-  const handleModal = (comp) => {
+  const handleModal = (comp, newOptions = {}) => {
+    setOptions(newOptions);
     if (comp) {
-      setOpen(true);
-      setContent(comp);
+      if (comp !== 'keep') {
+        setOpen(true);
+        setContent(comp);
+      }
     } else {
       setOpen(false);
     }
@@ -59,7 +74,7 @@ export default function FrontModal({ children }) {
         {children}
       </ModalContext.Provider>
       <Modal
-        className={`${classes.modal}`}
+        className={`${classes.modal} front-modal`}
         open={open}
         closeAfterTransition
         onClose={() => setOpen(false)}
@@ -73,6 +88,15 @@ export default function FrontModal({ children }) {
             <IconButton onClick={() => handleModal()} className={classes.close}>
               <CloseIcon color="secondary" />
             </IconButton>
+            {options.onBack && (
+              <IconButton
+                onClick={options.onBack}
+                className={classes.back}
+                color="secondary"
+              >
+                <ArrowBack color="secondary" />
+              </IconButton>
+            )}
             {content}
           </div>
         </Fade>

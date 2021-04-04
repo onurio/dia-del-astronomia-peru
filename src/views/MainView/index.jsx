@@ -37,7 +37,12 @@ export default function MainView({ data, db }) {
             <div className="main-content">
               <Router>
                 {/* <div path="/">home</div> */}
-                <Stand path="/cabina/:id" />
+                <Stand
+                  liveLink={data.liveLink}
+                  ticketLink={data.ticketLink}
+                  stands={data.stands}
+                  path="/cabina/:id"
+                />
               </Router>
             </div>
             <div className="main-spacer" />

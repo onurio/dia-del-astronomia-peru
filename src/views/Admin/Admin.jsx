@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
-// import firebase from 'firebase';
+import firebase from 'firebase';
 import Dashboard from './Dashboard';
 export default function Admin({ auth, children }) {
-  const [isAuthenticaited, setIsAuthenticaited] = useState(true);
+  const [isAuthenticaited, setIsAuthenticaited] = useState(false);
 
   const logout = () => {
     auth
@@ -20,10 +20,7 @@ export default function Admin({ auth, children }) {
   useEffect(() => {
     auth.onAuthStateChanged(function (user) {
       if (user) {
-        if (
-          user.email === 'omrinuri@gmail.com' ||
-          user.email === 'galeriadeartegatotulipan@gmail.com'
-        ) {
+        if (user.email === 'omrinuri@gmail.com') {
           setIsAuthenticaited(true);
         } else {
           setIsAuthenticaited(false);
@@ -37,28 +34,28 @@ export default function Admin({ auth, children }) {
   }, [auth]);
 
   const login = () => {
-    // if (isAuthenticaited) return;
-    // const provider = new firebase.auth.GoogleAuthProvider();
-    // firebase
-    //   .auth()
-    //   .signInWithPopup(provider)
-    //   .then((result) => {
-    //     const user = result.user;
-    //     if (
-    //       user.email === 'omrinuri@gmail.com' ||
-    //       user.email === 'galeriadeartegatotulipan@gmail.com'
-    //     ) {
-    //       setIsAuthenticaited(true);
-    //     } else {
-    //       alert('Your google account is unauthorized to use this page.');
-    //       setIsAuthenticaited(false);
-    //     }
-    //     // ...
-    //   })
-    //   .catch((error) => {
-    //     // Handle Errors here.
-    //     alert(error.message);
-    //   });
+    if (isAuthenticaited) return;
+    const provider = new firebase.auth.GoogleAuthProvider();
+    firebase
+      .auth()
+      .signInWithPopup(provider)
+      .then((result) => {
+        const user = result.user;
+        if (
+          user.email === 'omrinuri@gmail.com' ||
+          user.email === 'astrospace.app@gmail.com'
+        ) {
+          setIsAuthenticaited(true);
+        } else {
+          alert('Your google account is unauthorized to use this page.');
+          setIsAuthenticaited(false);
+        }
+        // ...
+      })
+      .catch((error) => {
+        // Handle Errors here.
+        alert(error.message);
+      });
   };
 
   if (isAuthenticaited) {
