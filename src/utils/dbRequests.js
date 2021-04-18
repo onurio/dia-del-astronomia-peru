@@ -14,7 +14,6 @@ export const getStands = async (db) => {
 
 export const getLinks = async (db) => {
   try {
-    console.log('asdfsdfasdfasd');
     let snapshot = await db.collection('generalData').get();
     let links = {};
     snapshot.docs.forEach((doc) => {

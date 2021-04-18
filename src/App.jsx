@@ -36,7 +36,6 @@ function App() {
   const [data, setData] = useState({});
   const [userDetails, setUserDetails] = useState({ trivia: {}, coins: 0 });
 
-  console.log(userDetails);
   useEffect(() => {
     if (isLoaded) {
       localStorage.setObject('astronomia-peru', userDetails);

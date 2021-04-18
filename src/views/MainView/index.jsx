@@ -3,6 +3,7 @@ import React, { useEffect } from 'react';
 import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
 import Stand from './Stand';
 import FrontModal from '../Admin/components/FrontModal';
+import Home from './Home';
 
 const theme = createMuiTheme({
   palette: {
@@ -36,7 +37,7 @@ export default function MainView({ data, db }) {
           <div className="main">
             <div className="main-content">
               <Router>
-                {/* <div path="/">home</div> */}
+                <Home data={data} path="/" />
                 <Stand
                   liveLink={data.liveLink}
                   ticketLink={data.ticketLink}

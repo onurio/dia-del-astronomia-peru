@@ -1,6 +1,14 @@
 .App {
   text-align: center;
+  min-height: 100%;
 }
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
 
 .main > * {
   font-family: 'ErasITC-Bold';
