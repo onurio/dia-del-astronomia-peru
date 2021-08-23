@@ -1,7 +1,10 @@
 import React from 'react';
 import './Workshops.scss';
 
-export default function Workshops({ stand }) {
+export default function Workshops({ stand, fx }) {
+  const buttonSound = () => {
+    fx('button');
+  };
   return (
     <div className="content-container">
       <h2>Talleres</h2>
@@ -11,6 +14,7 @@ export default function Workshops({ stand }) {
             {stand.workshops.map((workshop) => {
               return (
                 <a
+                  onClick={buttonSound}
                   key={workshop.link}
                   target="_blank"
                   rel="noreferrer"

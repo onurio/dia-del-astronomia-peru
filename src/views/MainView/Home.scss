@@ -1,5 +1,9 @@
 .home {
   height: 100vh;
+  .mobile-bottom-nav {
+    position: fixed;
+    bottom: 3vh;
+  }
   .logo-container {
     position: absolute;
     top: 0;
@@ -13,7 +17,7 @@
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
-    height: 100vh;
+    height: 120vh;
     width: 100%;
     position: relative;
     overflow: hidden;
@@ -22,20 +26,18 @@
       background-repeat: no-repeat;
       background-position: center;
       background-size: contain;
-      height: 85vh;
-
-      //   padding: 140px 0 0 0;
-      width: 130vh;
-      margin: 10vh 0 0 -38vh;
+      height: 490px;
+      width: 750px;
+      margin: 15vh 0 0 calc(-335px + 35%);
 
       transform: rotate(90deg);
       .stand-button {
         background-color: var(--secondary-color);
         border-radius: 100%;
 
-        width: 28px;
+        width: 24px;
         transform: rotate(-90deg);
-        height: 28px;
+        height: 24px;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -46,73 +48,28 @@
       }
     }
   }
-  .mobile-bottom-nav {
-    position: absolute;
-    display: flex;
-    justify-content: space-between;
-    bottom: 0;
-    width: 100%;
-    z-index: 1;
-  }
-  .coins-container {
-    background-color: white;
-    width: 55px;
-    height: 55px;
-
-    margin: 5px 5px 5px 25px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 100%;
-    position: relative;
-    &::before {
-      content: '';
-      background-image: url('../../images/coins.svg');
-      position: absolute;
-      top: -12px;
-      left: -45px;
-      background-size: contain;
-      width: 101px;
-      height: 32px;
-      background-repeat: no-repeat;
-    }
-  }
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 769px) {
   .home {
     .bg {
+      height: 100vh;
+
       .spaceship {
         padding: 0;
         margin: 0 auto;
         position: relative;
         transform: unset;
         width: 130vh;
+        height: 85vh;
 
         .stand-button {
-          width: 40px;
-          height: 40px;
+          width: 25px;
+          height: 25px;
+          font-size: 12px;
           transform: unset;
         }
       }
-    }
-    .coins-container {
-      width: 80px;
-      height: 80px;
-      &:before {
-        top: -30px;
-        left: -90px;
-        width: 200px;
-        height: 80px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-      }
-    }
-    .mobile-bottom-nav {
-      justify-content: space-evenly;
-      bottom: 30px;
-      width: 50%;
     }
   }
 }

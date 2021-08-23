@@ -1,0 +1,12 @@
+.planet-name {
+  z-index: 1000;
+  position: absolute;
+  pointer-events: none;
+  color: var(--primary-color);
+  width: 100%;
+  top: 31vh;
+  h3 {
+    margin-top: 10px;
+    text-transform: uppercase;
+  }
+}

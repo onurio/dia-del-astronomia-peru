@@ -1,7 +1,10 @@
 import React from 'react';
 import './Downloads.scss';
 
-export default function Downloads({ stand }) {
+export default function Downloads({ stand, fx }) {
+  const buttonSound = () => {
+    fx('button');
+  };
   if (stand.downloads?.length > 0) {
     return (
       <div className="content-container">
@@ -9,6 +12,7 @@ export default function Downloads({ stand }) {
         <div className="d-links">
           {stand.downloads.map((file) => (
             <a
+              onClick={buttonSound}
               className="download-link"
               rel="noreferrer"
               href={file.url}

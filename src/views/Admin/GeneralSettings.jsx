@@ -41,6 +41,7 @@ export default function GeneralSettings({ db }) {
 
   const [liveLink, setLiveLink] = useState();
   const [ticketLink, setTicketLink] = useState();
+  const [brochureLink, setBrochureLink] = useState();
 
   const onLiveLinkSave = () => {
     db.collection('generalData').doc('liveLink').set({
@@ -54,6 +55,12 @@ export default function GeneralSettings({ db }) {
     });
   };
 
+  const onBrochureLinkSave = () => {
+    db.collection('generalData').doc('brochureLink').set({
+      data: brochureLink,
+    });
+  };
+
   const getLiveLink = () => {
     db.collection('generalData')
       .doc('liveLink')
@@ -61,6 +68,23 @@ export default function GeneralSettings({ db }) {
       .then(function (doc) {
         if (doc.exists) {
           setLiveLink(doc.data().data);
+        } else {
+          // doc.data() will be undefined in this case
+          console.log('No such document!');
+        }
+      })
+      .catch(function (error) {
+        console.log('Error getting live link:', error);
+      });
+  };
+
+  const getBrochureLink = () => {
+    db.collection('generalData')
+      .doc('brochureLink')
+      .get()
+      .then(function (doc) {
+        if (doc.exists) {
+          setBrochureLink(doc.data().data);
         } else {
           // doc.data() will be undefined in this case
           console.log('No such document!');
@@ -91,6 +115,7 @@ export default function GeneralSettings({ db }) {
   useEffect(() => {
     getLiveLink();
     getTicketLink();
+    getBrochureLink();
   }, []);
 
   return (
@@ -136,6 +161,28 @@ export default function GeneralSettings({ db }) {
             />
             <Button
               onClick={onTicketLinkSave}
+              color="primary"
+              variant="contained"
+            >
+              Save
+            </Button>
+          </Paper>
+        </Grid>
+        <Grid item xs={6}>
+          <Paper className={[classes.hoursContainer, classes.paper]}>
+            <Typography className={classes.title} variant="h4">
+              Brochure Link
+            </Typography>
+            <TextField
+              variant="outlined"
+              multiline
+              onChange={(e) => setBrochureLink(e.target.value)}
+              value={brochureLink}
+              placeholder="Link"
+              className={classes.fullWidth}
+            />
+            <Button
+              onClick={onBrochureLinkSave}
               color="primary"
               variant="contained"
             >

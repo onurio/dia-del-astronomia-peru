@@ -12,26 +12,25 @@ import Trivia from './Trivia';
 import Workshops from './Workshops';
 import { ModalContext } from '../Admin/components/FrontModal';
 
-export default function DesktopMenu({ stand }) {
+export default function DesktopMenu({ stand, fx }) {
   const handleModal = useContext(ModalContext);
 
-  console.log(stand);
   const onPress = (e) => {
     switch (e.target.id) {
       case 'info':
-        handleModal(<Information stand={stand} />);
+        handleModal(<Information fx={fx} stand={stand} />);
         return;
       case 'social':
-        handleModal(<Social stand={stand} />);
+        handleModal(<Social fx={fx} stand={stand} />);
         return;
       case 'downloads':
-        handleModal(<Downloads stand={stand} />);
+        handleModal(<Downloads fx={fx} stand={stand} />);
         return;
       case 'trivia':
-        handleModal(<Trivia stand={stand} />);
+        handleModal(<Trivia fx={fx} stand={stand} />);
         return;
       case 'workshops':
-        handleModal(<Workshops stand={stand} />);
+        handleModal(<Workshops fx={fx} stand={stand} />);
         return;
       default:
         return;

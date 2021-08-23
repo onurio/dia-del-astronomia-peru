@@ -25,7 +25,7 @@ export default function TicketModal({ coins, link }) {
       <div className="content-container ticket-modal ">
         <p>
           Aún no has acumulado la suficiente cantidad de monedas para viajar a
-          otra galaxia. 
+          otra galaxia. Necesitas 100 monedas
         </p>
         <img width="100px" src={astronautsad} alt="Astronauta" />
 

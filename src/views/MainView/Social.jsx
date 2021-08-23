@@ -5,7 +5,10 @@ import yb from '../../images/youtube.svg';
 import ig from '../../images/instagram.svg';
 import mail from '../../images/mail.svg';
 
-export default function Social({ stand }) {
+export default function Social({ stand, fx }) {
+  const buttonSound = () => {
+    fx('button');
+  };
   return (
     <div className="social-container">
       <h2>REDES SOCIALES Y CONTACTO</h2>
@@ -13,6 +16,7 @@ export default function Social({ stand }) {
       <div className="links">
         {stand.youtubeLink !== '' && (
           <a
+            onClick={buttonSound}
             href={stand.youtubeLink}
             target="_blank"
             rel="noreferrer"
@@ -23,6 +27,7 @@ export default function Social({ stand }) {
         )}
         {stand.facebookLink !== '' && (
           <a
+            onClick={buttonSound}
             href={stand.facebookLink}
             target="_blank"
             rel="noreferrer"
@@ -33,6 +38,7 @@ export default function Social({ stand }) {
         )}
         {stand.instagramLink !== '' && (
           <a
+            onClick={buttonSound}
             href={stand.instagramLink}
             target="_blank"
             rel="noreferrer"
@@ -43,6 +49,7 @@ export default function Social({ stand }) {
         )}
         {stand.email !== '' && (
           <a
+            onClick={buttonSound}
             href={`mailto:${stand.email}`}
             target="_blank"
             rel="noreferrer"

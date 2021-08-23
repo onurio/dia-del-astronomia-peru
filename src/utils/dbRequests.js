@@ -33,7 +33,6 @@ export const deleteStand = async (db, id) => {
 
 export const saveStand = async (db, stand) => {
   try {
-    console.log(stand);
     const ref = await db.collection('stands').doc(stand.id);
     stand.id = ref.id;
     ref.set(stand);

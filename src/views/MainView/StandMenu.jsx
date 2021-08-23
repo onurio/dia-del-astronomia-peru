@@ -11,7 +11,7 @@ import Downloads from './Downloads';
 import Trivia from './Trivia';
 import Workshops from './Workshops';
 
-export default function StandMenu({ stand, handleModal }) {
+export default function StandMenu({ stand, handleModal, fx = () => {} }) {
   const [route, setRoute] = useState();
   const onPress = (e) => {
     setRoute(e.target.id);
@@ -22,16 +22,16 @@ export default function StandMenu({ stand, handleModal }) {
       return <Information stand={stand} />;
     case 'social':
       handleModal('keep', { onBack: () => setRoute() });
-      return <Social stand={stand} />;
+      return <Social fx={fx} stand={stand} />;
     case 'downloads':
       handleModal('keep', { onBack: () => setRoute() });
-      return <Downloads stand={stand} />;
+      return <Downloads fx={fx} stand={stand} />;
     case 'trivia':
       handleModal('keep', { onBack: () => setRoute() });
-      return <Trivia stand={stand} />;
+      return <Trivia fx={fx} stand={stand} />;
     case 'workshops':
       handleModal('keep', { onBack: () => setRoute() });
-      return <Workshops stand={stand} />;
+      return <Workshops fx={fx} stand={stand} />;
     default:
       handleModal('keep', {});
       return (

@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import Hamburger from './components/Hamburger';
 import './Home.scss';
 import TicketModal from './TicketModal';
@@ -9,6 +9,8 @@ import StandMenu from './StandMenu';
 import { UserContext } from '../../App';
 import logo from '../../images/logo.png';
 import { navigate } from '@reach/router';
+import BottomNav from './BottomNav';
+import SimpleLoader from './SimpleLoader';
 
 let standPositions = [
   {
@@ -93,34 +95,52 @@ let standPositions = [
   },
 ];
 
-const StandPreview = ({ stand, onNav }) => (
-  <div className="content-container">
-    <h2>{stand.name}</h2>
-    <img src={stand.logo} width="100%" alt="" />
-    <button
-      onClick={() => {
-        navigate('/cabina/' + stand.id);
-        onNav();
-      }}
-      style={{ marginTop: 50 }}
-    >
-      Entrar
-    </button>
-  </div>
-);
+const StandPreview = ({ stand, onNav, fx }) => {
+  const [loaded, setLoaded] = useState(false);
+  return (
+    <div className="content-container">
+      <h2>{stand.name}</h2>
+      <img
+        onLoad={() => setLoaded(true)}
+        style={{ maxHeight: 250, margin: '0 auto', objectFit: 'contain' }}
+        src={stand.logo}
+        width="100%"
+        alt=""
+      />
 
-export default function Home({ data }) {
+      {!loaded && (
+        <div
+          style={{ width: '100%', display: 'flex', justifyContent: 'center' }}
+        >
+          <SimpleLoader />
+        </div>
+      )}
+      <button
+        onClick={() => {
+          fx('button');
+          navigate('/cabina/' + stand.id);
+          onNav();
+        }}
+        style={{ marginTop: 50 }}
+      >
+        Entrar
+      </button>
+    </div>
+  );
+};
+
+export default function Home({ data, fx }) {
   const handleModal = useContext(ModalContext);
   const { userDetails } = useContext(UserContext);
-  const openMenu = () => {
-    // handleModal(>);
-  };
 
   const openStand = (index) => {
     if (data.stands) {
       if (index < data.stands.length) {
+        fx('interface');
+
         handleModal(
           <StandPreview
+            fx={fx}
             onNav={() => {
               handleModal();
             }}
@@ -149,31 +169,7 @@ export default function Home({ data }) {
           })}
         </div>
       </div>
-      <div className="mobile-bottom-nav">
-        <div className="coins-container">
-          <p>{userDetails.coins}</p>
-        </div>
-        <a
-          href={data.liveLink}
-          rel="noreferrer"
-          target="_blank"
-          className="icon-button"
-        >
-          <img src={liveIcon} alt="live stream" />
-        </a>
-        <button
-          onClick={() =>
-            handleModal(
-              <TicketModal link={data.ticketLink} coins={userDetails.coins} />
-            )
-          }
-          className="icon-button"
-        >
-          <img src={ticketIcon} alt="Viaja" />
-        </button>
-
-        {/* <Hamburger onClick={openMenu} /> */}
-      </div>
+      <BottomNav fx={fx} subMenu={false} data={data} />
       <div className="logo-container">
         <img
           className="logo"

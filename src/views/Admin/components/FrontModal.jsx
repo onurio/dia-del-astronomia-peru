@@ -50,7 +50,7 @@ const useStyles = makeStyles((theme) => ({
 
 export const ModalContext = createContext();
 
-export default function FrontModal({ children }) {
+export default function FrontModal({ fx, children }) {
   const classes = useStyles();
   const [open, setOpen] = useState(false);
   const [content, setContent] = useState(null);
@@ -58,6 +58,7 @@ export default function FrontModal({ children }) {
 
   const handleModal = (comp, newOptions = {}) => {
     setOptions(newOptions);
+    fx('interface');
     if (comp) {
       if (comp !== 'keep') {
         setOpen(true);

@@ -4,7 +4,7 @@ import './Trivia.scss';
 import correct from '../../images/correcto.svg';
 import incorrect from '../../images/incorrecto.svg';
 
-export default function Trivia({ stand }) {
+export default function Trivia({ stand, fx }) {
   const [standQuestions, setStandQuestions] = useState([]);
   const { userDetails, setUserDetails } = useContext(UserContext);
   const [guessScreen, setGuessScreen] = useState({ on: false, correct: false });
@@ -28,6 +28,7 @@ export default function Trivia({ stand }) {
 
   const onTry = (answer, question) => {
     if (answer.isCorrect) {
+      fx('good');
       setGuessScreen({ on: true, correct: true });
       setTimeout(() => {
         setGuessScreen({ on: false, correct: false });
@@ -48,6 +49,7 @@ export default function Trivia({ stand }) {
         }));
       }, 2000);
     } else {
+      fx('bad');
       setGuessScreen({ on: true, correct: false });
       setTimeout(() => {
         setGuessScreen({ on: false, correct: false });
